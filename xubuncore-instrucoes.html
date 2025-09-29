@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Author" content="Antonio Duarte Costa">
+  <title>XubunCORE: Instruções Usadas na criação da Máquina Virtual</title>
+  <link rel="stylesheet" type="text/css" href="costa.css">
+  <base target="_top">
+</head>
+
+<body>
+<!-- topo da pagina --> 
+
+  <h1 id="topo_pagina" class="center">ubunCORE: Instruções Usadas na criação da Máquina Virtual</h1>
+
+<hr>
+<p> <b><u>Editado em</u></b>: <em>13.fevereiro.2024 </em><br>
+    NOTA: Estas instruções só devem ser usadas se só se pretender recriar uma máquina virtual de raíz igual à que <a href="index.html">está disponível para download</a>.
+    </p>
+<hr>
+
+<!-- instruções --> 
+<h2 id="instrucoes">Instruções que foram usadas para criar as VMs Xubuncore</h2>
+<blockquote>
+        <p> Em resumo, as imagens VMWare e Virtualbox acima disponibilizadas foram preparadas da seguinte forma:<p>
+        <ul> 
+                <li> Instalação normal do sistema operativo (X)Ubuntu 20.04 LTS (recomendado) </li>
+                <li> Instalação dos packages de suporte (pre-requisitos CORE) </li>
+                <li> Download e instalação do CORE 7.5.2 (servidor e ambiente gráfico) </li>
+                <li> Instalação de packages extra necessários para os trabalhos práticos</li>
+        </ul>
+        <p> Em detalhe, os passos acima enumerados traduzem-se nas seguintes instruções:</p>
+        <ol>
+        <li> <a href="http://xubuntu.org/getxubuntu/">Descarregar e instalar Xubuntu 20.04 LTS </a>
+            <blockquote>
+            <p>Q: Porquê <a href="http://xubuntu.org/">Xubuntu</a>?<br>
+            R: Pela enorme popularidade da distribuição Ubuntu, 
+            pela estabilidade da versão 20.04 TLS, e porque usa 
+            um ambiente gráfico Desktop menos exigente em termos 
+            de recursos (memória e CPU): o 
+            <a href="http://xfce.org/">XFce</a>. Melhor só o 
+            <a href="http://lubuntu.net/">Lubuntu 20.04 LTS</a></p>
+            </blockquote>
+        </li>
+        <li> Atualizar packages: 
+             <pre>
+sudo apt-get update 
+sudo apt-get upgrade
+             </pre>
+        </li>
+        <li> Instalar/atualizar packages de suporte: 
+             <pre>
+sudo apt install build-essential
+sudo apt install virtualbox-guest-dkms virtualbox-guest-x11
+sudo apt install git gcc make vim libtk-img bash xterm
+sudo apt install sntp ntp wget lynx curl net-tools traceroute tcptraceroute 
+sudo apt install ipcalc socat hping3 httpie whois ngrep
+sudo apt install tcpdump wireshark iperf iperf3 tshark openssh-server openssh-client openssh-sftp-server
+sudo apt install vsftpd atftp atftpd apache2 mini-httpd openvpn isc-dhcp-server isc-dhcp-client
+sudo apt install bind9 bind9-utils
+             </pre>
+        </li>
+        <li> Instalar CORE: 
+             <pre>
+cd 
+git clone https://github.com/coreemu/core.git
+cd core 
+sudo ./install.sh -v -p /usr/local
+             </pre>
+        </li>
+        <li> Testar o funcionamento do CORE
+        <p> 
+        Iniciar o <em>daemon</em>:
+        </p>
+             <pre>
+sudo systemctl start core-daemon.service 
+             </pre>
+        <p> 
+        Ativar automaticamente no arranque (boot):
+        </p>
+             <pre>
+sudo systemctl enable --now core-daemon.service 
+             </pre>
+        <p> 
+        Correr o CORE:
+        </p>
+             <pre>
+sudo core-gui 
+             </pre>
+        </li>
+        </ol>
+</blockquote>
+<hr>
+
+<!-- fim da pagina (validacao HTML) -->
+<hr>&nbsp; 
+<i><small><small>
+                        Last Modified on Tue 13th February 2024, by <a href="http://marco.uminho.pt/~costa">António Duarte Costa (ADC)</a>.
+<br><br></small></small></i>
+<p> 
+   <a href="https://validator.w3.org/nu/"><img  
+      src="http://www.w3.org/Icons/valid-xhtml20" 
+      alt="Valid HTML!" width="88" height="31"></a>
+   <a href="http://www.vim.org/"><img  
+      src="created-with-vim.png"
+      alt="Created with Vim Editor"></a>
+</p>
+</body>
+</html>
+

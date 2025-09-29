@@ -1,0 +1,35 @@
+body         { 
+   font-family: Arial, Verdana, Helvetica; 
+   background-color: rgb(255,255,255); 
+   color: #003366; font-size: 10pt 
+}
+
+.bodysmall   { 
+   font-family: Arial, Verdana, Helvetica; 
+   background-color: rgb(255,255,255); 
+   color: #003366; font-size: 10pt 
+}
+
+.listsmall   { 
+   font-family: Arial, Verdana, Helvetica; 
+   background-color: rgb(255,255,255); 
+   color: #003366; font-size: 10pt; 
+   margin-top: 0; 
+   margin-bottom: 10 
+}
+
+h1 { font-family: Arial, Verdana, Helvetica; color: #000080 }
+h2 { font-family: Arial, Verdana, Helvetica; color: #336699 }
+h3 { font-family: Arial, Verdana, Helvetica; color: #009999 }
+h4 { font-family: Arial, Verdana, Helvetica; color: rgb(153,153,0); }
+h5 { font-family: Arial, Verdana, Helvetica; color: rgb(255,153,0);}
+h6 { font-family: Arial, Verdana, Helvetica; color: rgb(51,102,204);}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+

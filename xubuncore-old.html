@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Author" content="Antonio Duarte Costa">
+  <title>XubunCORE 7.5: Xubuntu 20.04 LTS + CORE 7.5.2</title>
+  <link rel="stylesheet" type="text/css" href="http://marco.uminho.pt/~costa/costa.css">
+  <base target="_top">
+</head>
+
+<body>
+<!-- topo da pagina --> 
+
+  <h1 id="topo_pagina" class="center">XubunCORE 7.5: Xubuntu 20.04 LTS + CORE 7.5.2 </h1>
+
+<hr>
+  <p> <b><u>Editado em</u></b>: <em>10.outubro.2021 </em></p>
+  <p> Para uso nas aulas práticas aqui se disponibiliza uma máquina virtual
+  Linux Ubuntu 20.04 LTS com o <a href="#core">emulador CORE 7.5.2</a> instalado 
+  e mais alguns extras. 
+
+  Incluem-se <a href="#instrucoes">as instruções que foram usadas</a> na sua criação. </p>
+<hr>
+
+<!-- 1. Imagem pronta --> 
+<h2 id="imagem">1. Imagem XubunCORE (Xubuntu + CORE) </h2>
+<blockquote>
+        <ul>
+            <li> Versão VirtualBox: <a href="XubunCORE_7_5.zip">XubunCORE_7_5.zip</a> (3.2 GB zipped, 9.1 GB unzipped) (10.outubro.2021)
+                <pre>
+   wget http://marco.uminho.pt/ferramentas/CORE/XubunCORE_7_5.zip
+                </pre>
+            <p> Máquina virtual em formato original <a href="https://www.virtualbox.org/">VirtualBox</a> (para quem usa VirtualBox, apenas). </p>
+            <p><u><em>Detalhes</em></u>: 2GB Memória, 2 Processador, 10GB Disco, Intel PRO/1000 em NAT </p>
+            <p> Também disponível no seguinte <a href="https://reposlink.di.uminho.pt/uploads/b6e2e6964ee95dfa2bcf9833f59d2624.file.XubunCORE75.zip">link alternativo</a> 
+            </p>
+            <p> Verificação de integridade:
+                <pre>
+   Length: 3423601224 (3.2G)
+   MD5 (XubunCORE_7_5.zip) = 30b5a31a39f99f0e88a3968883012c09
+   SHA1 (XubunCORE_7_5.zip) = 10315a225eccc8215575c584ffec5364ef57050b
+   SHA256 (XubunCORE_7_5.zip) = 6662887ce7dcfd5e547acf212ed3e22f23fda7cb4ea09cde62fb9a5402a6c4e1
+                </pre>
+            </p>
+            </li>
+
+            <li> Versão OVA (Open Virtual Appliance):  <a href="XubunCORE_7_5.ova">XubunCORE_7_5.ova</a>
+                <pre>
+   wget http://marco.uminho.pt/ferramentas/CORE/XubunCORE_7_5.ova
+                </pre>
+            <p> Máquina virtual em <a href="https://en.wikipedia.org/wiki/Open_Virtualization_Format">formato normalizado OVA</a> e que pode ser importado por outros 
+            softwares de virtualização genéricos, como por exemplo os produtos VMWare.</p>
+            <p><u><em>Detalhes</em></u>: 2GB Memória, 2 Processador, 10GB Disco, Intel PRO/1000 em NAT </p>
+            <p> Verificação de integridade:
+                <pre>
+   Length: 3522980864 (3.3G)
+   MD5 (XubunCORE_7_5.ova) = 108aae62f4b51bdef7beda334469168c
+   SHA1 (XubunCORE_7_5.ova) = 9ad655d0356361122a851b2bf4cda92c60af7487
+   SHA256 (XubunCORE_7_5.ova) = ab6579865c32e547969282f72f5fa2829e84b78ea65c64334497bf26ffc9002e
+                </pre>
+            </p>
+            </li>
+
+            <li> Imagens antigas de <a href="xubuncore4.html">outras versões Xubuncore (xubuncore4) </a>
+            <p> Ainda pode ser útil, dado que usa menos recursos da máquina nativa.</p>
+            </li>
+        </ul>
+</blockquote>
+<hr>
+
+<!-- 2. instruções --> 
+<h2 id="instrucoes">2. Instruções usadas </h2>
+<blockquote>
+        <p> Em resumo, as imagens VMWare e Virtualbox acima disponibilizadas foram preparadas da seguinte forma:<p>
+        <ul> 
+                <li> Instalação normal do sistema operativo (X)Ubuntu 20.04 LTS (recomendado) </li>
+                <li> Instalação dos packages de suporte (pre-requisitos CORE) </li>
+                <li> Download e instalação do CORE 7.5.2 (servidor e ambiente gráfico) </li>
+                <li> Instalação de packages extra necessários para os trabalhos práticos</li>
+        </ul>
+        <p> Em detalhe, os passos acima enumerados traduzem-se nas seguintes instruções:</p>
+        <ol>
+        <li> <a href="http://xubuntu.org/getxubuntu/">Descarregar e instalar Xubuntu 20.04 LTS </a>
+            <blockquote>
+            <p>Q: Porquê <a href="http://xubuntu.org/">Xubuntu</a>?<br/>
+            R: Pela enorme popularidade da distribuição Ubuntu, 
+            pela estabilidade da versão 20.04 TLS, e porque usa 
+            um ambiente gráfico Desktop menos exigente em termos 
+            de recursos (memória e CPU): o 
+            <a href="http://xfce.org/">XFce</a>. Melhor só o 
+            <a href="http://lubuntu.net/">Lubuntu 20.04 LTS</a></p>
+            </blockquote>
+        </li>
+        <li> Atualizar packages: 
+             <pre>
+sudo apt-get update 
+sudo apt-get upgrade
+             </pre>
+        </li>
+        <li> Instalar/atualizar packages de suporte: 
+             <pre>
+sudo apt install build-essential
+sudo apt install virtualbox-guest-dkms virtualbox-guest-x11
+sudo apt install git gcc make vim libtk-img bash xterm
+sudo apt install sntp ntp wget lynx curl net-tools traceroute tcptraceroute 
+sudo apt install ipcalc socat hping3 httpie whois ngrep
+sudo apt install tcpdump wireshark iperf iperf3 tshark openssh-server openssh-client openssh-sftp-server
+sudo apt install vsftpd atftp atftpd apache2 mini-httpd openvpn isc-dhcp-server isc-dhcp-client
+sudo apt install bind9 bind9-utils
+             </pre>
+        </li>
+        <li> Instalar CORE: 
+             <pre>
+cd 
+git clone https://github.com/coreemu/core.git
+cd core 
+sudo ./install.sh -v -p /usr/local
+             </pre>
+        </li>
+        <li> Testar o funcionamento do CORE
+        <p> 
+        Iniciar o <em>daemon</em>:
+        </p>
+             <pre>
+sudo systemctl start core-daemon.service 
+             </pre>
+        <p> 
+        Ativar automaticamente no arranque (boot):
+        </p>
+             <pre>
+sudo systemctl enable --now core-daemon.service 
+             </pre>
+        <p> 
+        Correr o CORE:
+        </p>
+             <pre>
+sudo core-gui 
+             </pre>
+        </li>
+        </ol>
+</blockquote>
+<hr>
+
+<!-- 3. links para o CORE  --> 
+<h2 id="core">3. Links para o projeto CORE original</h2>
+<blockquote>
+   <ul>
+      <li>Repositório git: <a href="https://github.com/coreemu/core">https://github.com/coreemu/core</a> </li>
+      <li>Manual do CORE: <a href="https://coreemu.github.io/core/">https://coreemu.github.io/core/</a> 
+          (See: <a href="https://coreemu.github.io/core/gui.html">How to use the GUI</a>, for starting)</li>
+      <li>Página principal do projeto: <a href="http://cs.itd.nrl.navy.mil/work/core/">http://cs.itd.nrl.navy.mil/work/core/</a> </li>
+   </ul>
+</blockquote>
+
+<!-- fim da pagina (validacao HTML) -->
+<hr>&nbsp; 
+<i><small><small>
+                        Last Modified on Sun 10th October 2021, by <a href="http://marco.uminho.pt/~costa">António Duarte Costa (ADC)</a>.
+<br><br></small></small></i>
+<p> 
+   <a href="http://validator.w3.org/check/referer"><img  
+      src="http://www.w3.org/Icons/valid-html401" 
+      alt="Valid HTML!" width="88" height="31"></a>
+   <a href="http://www.vim.org/"><img  
+      src="created-with-vim.png"
+      alt="Created with Vim Editor"></a>
+</p>
+</body>
+</html>
+

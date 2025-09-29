@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Author" content="Antonio Duarte Costa">
+  <title>Xubuncore: Xubuntu 12.04 LTS + CORE 4.6</title>
+  <link rel="stylesheet" type="text/css" href="http://marco.uminho.pt/~costa/costa.css">
+  <base target="_top">
+</head>
+
+<body>
+<!-- topo da pagina --> 
+
+  <h1 id="topo_pagina" class="center">Xubuncore: Xubuntu 12.04 LTS + Core 4.6 </h1>
+
+  <p> Para uso nas aulas práticas  aqui se disponibiliza uma máquina virtual
+  Linux Ubuntu 12.04 LTS com o <a href="#core">emulador CORE 4.6</a> instalado 
+  e mais alguns extras. 
+
+  Incluem-se <a href="#instrucoes">as instruções que foram usadas</a> na sua criação. </p>
+<hr>
+<!-- 1. Imagem pronta --> 
+<h2 id="imagem">1. Imagem XubunCORE (Xubuntu + CORE) </h2>
+<blockquote>
+        <ul>
+            <li> Versão VirtualBox: <a href="XubunCORE_VBOX.zip">XubunCORE_VBOX.zip</a> (2.99 GB zipped, 6.96GB unzipped) (Fevereiro 2015)
+            <p> Máquina virtual em formato original <a href="https://www.virtualbox.org/">VirtualBox</a> (para quem usa VirtualBox, apenas). Xubuntu 12.04 LTS + Core 4.6 (1GB Memória, 1 Processador, 20GB Disco, Intel PRO/1000 em NAT)
+            </p>
+            </li>
+
+            <li> Versão VMWare: <a href="XubunCORE_VMWARE.zip">XubunCORE_VMWARE.zip</a> (4.01 GB zipped, 8.64 GB unzipped) (Fevereiro 2015)
+            <p> Máquina virtual em formato original <a href="https://www.vmware.com/">VMWare</a>, compatível com VMWare Workstation 10.0. Xubuntu 12.04 LTS + Core 4.6 (1GB Memória, 1 Processador, 20GB Disco (max), Network Adapter: NAT, Teclado português, "VMware Tools" instaladas)
+            </p>
+            </li>
+        </ul>
+</blockquote>
+<hr>
+
+<!-- 2. instruções --> 
+<h2 id="instrucoes">2. Instruções usadas </h2>
+<blockquote>
+        <p> Em resumo, as imagens VMWare e Virtualbox acima disponibilizadas foram preparadas da seguinte forma:<p>
+        <ul> 
+                <li> Instalação normal do sistema operativo (X)Ubuntu 12.04 LTS (recomendado) </li>
+                <li> Instalação dos packages de suporte (pre-requisitos CORE) </li>
+                <li> Download e instalação do CORE 4.6 (servidor e ambiente gráfico) </li>
+                <li> Instalação de packages extra necessários para os trabalhos práticos</li>
+        </ul>
+        <p> Em detalhe, os passos acima enumerados traduzem-se nas seguintes instruções:</p>
+        <ol>
+        <li> <a href="http://xubuntu.org/getxubuntu/">Descarregar e instalar Xubuntu 12.04 LTS </a>(instalação normal ou vmware)
+            <blockquote>
+            <p>Q: Porquê <a href="http://xubuntu.org/">Xubuntu</a>?<br/>
+            R: Pela enorme popularidade da distribuição Ubuntu, 
+            pela estabilidade da versão 12.04 TLS, e porque usa 
+            um ambiente gráfico Desktop menos exigente em termos 
+            de recursos (memória e CPU): o 
+            <a href="http://xfce.org/">XFce</a>. Melhor só o 
+            <a href="http://lubuntu.net/">Lubuntu 12.04 LTS</a></p>
+            </blockquote>
+        </li>
+        <li> Atualizar packages: 
+             <pre>
+$ sudo apt-get update
+$ sudo apt-get dist-upgrade
+             </pre>
+        </li>
+        <li> Instalar packages de suporte (pré-requisitos): 
+             <pre>
+$ sudo apt-get install bash bridge-utils ebtables iproute libev-dev libtk-img python tcl8.5 tk8.5 xterm
+$ wget http://downloads.pf.itd.nrl.navy.mil/ospf-manet/quagga-0.99.21mr2.2/quagga-mr_0.99.21mr2.2_i386.deb
+$ sudo dpkg -i quagga-mr_0.99.21mr2.2_i386.deb
+             </pre>
+        </li>
+        <li> Instalar CORE: 
+             <pre>
+$ wget http://downloads.pf.itd.nrl.navy.mil/core/packages/4.6/core_4.6-0ubuntu1_precise_i386.deb
+$ sudo dpkg -i core_4.6-0ubuntu1_precise_i386.deb
+             </pre>
+        </li>
+        <li> Instalar alguns packages extra que podem ser úteis: 
+             <pre>
+$ sudo apt-get install wireshark tcpdump iperf wget lynx net-tools
+$ sudo apt-get install vsftpd atftpd openssh-server
+$ sudo apt-get install dnsutils bind9
+             </pre>
+        </li>
+        <li> Testar:
+             <pre>
+$ sudo /etc/init.d/core start
+$ sudo core
+             </pre>
+        </li>
+        </ol>
+</blockquote>
+<hr>
+
+<!-- 3. links para o CORE  --> 
+<h2 id="core">3. Links para o projeto CORE original</h2>
+<blockquote>
+   <ul>
+      <li>Página principal do projeto: <a href="http://cs.itd.nrl.navy.mil/work/core/">http://cs.itd.nrl.navy.mil/work/core/</a> </li>
+      <li>Wiki e páginas adicionais: <a href="http://code.google.com/p/coreemu/"> http://code.google.com/p/coreemu/</a> </li>
+      <li><a href="http://pf.itd.nrl.navy.mil/core/core-html/">Manual do CORE</a> </li>
+   </ul>
+</blockquote>
+
+<!-- fim da pagina (validacao HTML) -->
+<hr>&nbsp; 
+<i><small><small>
+Last Modified on Thu 16 Feb 2017, by <a href="http://marco.uminho.pt/~costa">António Duarte Costa (ADC)</a> 
+<br><br></small></small></i>
+<p> 
+   <a href="http://validator.w3.org/check/referer"><img  
+      src="http://www.w3.org/Icons/valid-html401" 
+      alt="Valid HTML!" width="88" height="31"></a>
+   <a href="http://www.vim.org/"><img  
+      src="created-with-vim.png"
+      alt="Created with Vim Editor"></a>
+</p>
+</body>
+</html>
+
